@@ -19,15 +19,8 @@ data class LocationResponse(val code: String, val location: List<Location>)
  *
  * @property name 查询到的城市名
  * @property id 用于查询天气的城市id
- * @property address 城市详细信息
- */
-data class Location(val name: String, val id: String, val address: DetailedLocation)
-
-/**
- * 城市详细信息
- *
  * @property country 国
  * @property adm1 省
  * @property adm2 市
  */
-data class DetailedLocation(val country: String, val adm1: String, val adm2: String)
+data class Location(val name: String, val id: String, val country: String, val adm1: String, val adm2: String)
