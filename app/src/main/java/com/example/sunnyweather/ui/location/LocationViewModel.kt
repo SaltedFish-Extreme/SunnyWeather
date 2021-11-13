@@ -1,10 +1,10 @@
 package com.example.sunnyweather.ui.location
 
-import com.example.sunnyweather.logic.model.Location
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.sunnyweather.logic.Repository
+import com.example.sunnyweather.logic.model.Location
 
 /**
  * Created by 咸鱼至尊 on 2021/11/13
