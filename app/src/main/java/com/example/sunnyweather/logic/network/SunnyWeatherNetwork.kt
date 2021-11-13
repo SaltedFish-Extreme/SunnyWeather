@@ -15,7 +15,10 @@ import kotlin.coroutines.suspendCoroutine
 object SunnyWeatherNetwork {
 
     //创建LocationService接口动态代理对象
-    private val locationService = ServiceCreator.create<LocationService>()
+    private val locationService = ServiceCreator.createCity<LocationService>()
+
+    //创建WeatherService接口动态代理对象
+    private val weatherService = ServiceCreator.createWeather<WeatherService>()
 
     /**
      * 发起搜索城市数据请求
@@ -24,6 +27,22 @@ object SunnyWeatherNetwork {
      * @return 返回数据
      */
     suspend fun searchLocation(location: String) = locationService.searchLocations(location).await()
+
+    /**
+     * 发起实时天气查询请求
+     *
+     * @param locationID 要查询的城市ID
+     * @return 返回数据
+     */
+    suspend fun getNowWeather(locationID: String) = weatherService.getNowWeather(locationID).await()
+
+    /**
+     * 发起未来一周天气查询请求
+     *
+     * @param locationID 要查询的城市ID
+     * @return 返回数据
+     */
+    suspend fun getDailyWeather(locationID: String) = weatherService.getDailyWeather(locationID).await()
 
     /**
      * 简化Retrofit网络请求回调写法
