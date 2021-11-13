@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SunnyWeather</string>
     <string name="input_address">输入城市</string>
+    <string name="locationAddress">%s&#160;&#160;%s&#160;&#160;%s</string>
 </resources>
