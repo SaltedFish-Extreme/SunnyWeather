@@ -1,6 +1,6 @@
 package com.example.sunnyweather.ui.location
 
-import android.location.Location
+import com.example.sunnyweather.logic.model.Location
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
