@@ -11,4 +11,4 @@ package com.example.sunnyweather.logic.model
  * @property now 实时天气
  * @property daily 未来一周天气
  */
-data class Weather(val now: NowResponse.Now, val daily: DailyResponse.Daily)
+data class Weather(val now: NowResponse.Now, val daily: List<DailyResponse.Daily>)
