@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_marginBottom="5dp">
+
+    <!--标题-->
+    <FrameLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:id="@+id/locationName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="60dp"
+            android:lines="1"
+            android:text="@string/location_name"
+            android:textColor="@android:color/black"
+            android:textSize="40sp" />
+    </FrameLayout>
+
+    <!--内容-->
+    <LinearLayout
+        android:id="@+id/bodyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleLayout"
+        android:orientation="vertical">
+
+        <!--实时气温及天气情况-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/currentTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/current_temp"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textSize="60sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:text="@string/delimiter"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="60sp" />
+
+            <TextView
+                android:id="@+id/currentWeather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/current_weather"
+                android:textColor="@android:color/holo_blue_bright"
+                android:textSize="55sp" />
+        </LinearLayout>
+
+        <!--体感温度及相对湿度-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/feelsLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/feels_like"
+                android:textColor="@android:color/holo_orange_light"
+                android:textSize="55sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:text="@string/delimiter"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="55sp" />
+
+            <TextView
+                android:id="@+id/humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/humidity"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="50sp" />
+        </LinearLayout>
+
+        <!--风向及风力-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/windDir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/wind_dir"
+                android:textColor="@android:color/holo_purple"
+                android:textSize="40sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:text="@string/delimiter"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/windScale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wind_scale"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="40sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
