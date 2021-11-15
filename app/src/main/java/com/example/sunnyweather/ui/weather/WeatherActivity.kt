@@ -74,7 +74,7 @@ class WeatherActivity : AppCompatActivity() {
         forecastLayout.removeAllViews()
         for (daily in dailyList) {
             //将未来天气视图填充到未来天气布局中
-            val view = LayoutInflater.from(this).inflate(R.layout.item_forecast, forecastLayout,false)
+            val view = LayoutInflater.from(this).inflate(R.layout.item_forecast, forecastLayout, false)
             val dateInfo = view.findViewById<TextView>(R.id.dateInfo)
             val weatherInfo = view.findViewById<TextView>(R.id.weatherInfo)
             val temperatureInfo = view.findViewById<TextView>(R.id.temperatureInfo)
