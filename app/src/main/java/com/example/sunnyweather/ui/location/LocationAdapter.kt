@@ -26,7 +26,7 @@ class LocationAdapter(private val fragment: Fragment, private val locationList: 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val location = locationList[position]
         holder.locationName.text = location.name
-        holder.locationAddress.text = fragment.getString(R.string.locationAddress, location.country, location.adm1, location.adm2)
+        holder.locationAddress.text = fragment.getString(R.string.location_address, location.country, location.adm1, location.adm2)
     }
 
     override fun getItemCount() = locationList.size
