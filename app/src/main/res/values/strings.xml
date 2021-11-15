@@ -4,10 +4,10 @@
     <string name="location_address">%s&#160;&#160;%s&#160;&#160;%s</string>
     <string name="location_name">维多利亚港维多利亚港维多利亚港维多利亚港维多利亚港</string>
     <string name="delimiter">|</string>
-    <string name="current_temp">22°</string>
-    <string name="current_weather">雪</string>
-    <string name="feels_like">18°</string>
-    <string name="humidity">70%</string>
-    <string name="wind_dir">东南风</string>
-    <string name="wind_scale">1–3级</string>
+    <string name="current_temp">22</string>
+    <string name="current_weather">多云</string>
+    <string name="feels_like">18</string>
+    <string name="humidity">70</string>
+    <string name="wind_dir">东风</string>
+    <string name="wind_scale">1</string>
 </resources>
