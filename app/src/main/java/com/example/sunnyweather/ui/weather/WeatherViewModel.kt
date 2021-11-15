@@ -2,6 +2,7 @@ package com.example.sunnyweather.ui.weather
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
 import com.example.sunnyweather.logic.Repository
 
 /**
@@ -9,7 +10,7 @@ import com.example.sunnyweather.logic.Repository
  *
  * des: 查询天气信息vm层
  */
-class WeatherViewModel {
+class WeatherViewModel : ViewModel() {
 
     //可供观察的liveData对象
     private val locationIDLiveData = MutableLiveData<String>()
