@@ -19,7 +19,7 @@ class LocationAdapter(private val fragment: Fragment, private val locationList: 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_location, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_location, parent)
         return ViewHolder(view)
     }
 
