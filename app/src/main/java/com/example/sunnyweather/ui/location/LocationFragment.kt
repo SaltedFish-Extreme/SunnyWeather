@@ -22,7 +22,7 @@ import com.example.sunnyweather.R
 class LocationFragment : Fragment() {
 
     //初始化viewModel对象
-    private val viewModel: LocationViewModel by viewModels {
+    private val viewModel = viewModels<LocationViewModel> {
         ViewModelProvider.NewInstanceFactory()
     }
 
@@ -55,29 +55,29 @@ class LocationFragment : Fragment() {
         val layoutManager = LinearLayoutManager(activity)
         //设置recyclerView布局管理器
         recyclerView.layoutManager = layoutManager
-        adapter = LocationAdapter(this, viewModel.locationList)
+        adapter = LocationAdapter(this, viewModel.value.locationList)
         //设置recyclerView适配器
         recyclerView.adapter = adapter
         searchLocationEdit.addTextChangedListener {
             //监听当输入框文字发生改变且不为空时发送请求搜索城市数据
             val content = it.toString()
             if (content.isNotEmpty()) {
-                viewModel.searchLocation(content)
+                viewModel.value.searchLocation(content)
             } else {
                 recyclerView.visibility = View.INVISIBLE
                 bgImageView.visibility = View.VISIBLE
-                viewModel.locationList.clear()
+                viewModel.value.locationList.clear()
                 adapter.notifyDataSetChanged()
             }
         }
-        viewModel.locationLiveData.observe(viewLifecycleOwner) {
+        viewModel.value.locationLiveData.observe(viewLifecycleOwner) {
             //观察liveData数据发生改变，请求回调数据不为空则添加进数据源集合并刷新页面
             val locations = it.getOrNull()
             if (locations != null) {
                 recyclerView.visibility = View.VISIBLE
                 bgImageView.visibility = View.INVISIBLE
-                viewModel.locationList.clear()
-                viewModel.locationList.addAll(locations)
+                viewModel.value.locationList.clear()
+                viewModel.value.locationList.addAll(locations)
                 adapter.notifyDataSetChanged()
             } else {
                 Toast.makeText(activity, "未能查询到任何城市", Toast.LENGTH_SHORT).show()
