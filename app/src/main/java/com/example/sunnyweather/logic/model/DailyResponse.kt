@@ -15,25 +15,19 @@ data class DailyResponse(val code: String, val daily: List<Daily>) {
     /**
      * 逐天天气信息
      *
+     * @property fxDate 日期
      * @property tempMax 最高温
      * @property tempMin 最低温
      * @property textDay 白天天气状况
-     * @property windDirDay 白天风向
-     * @property windScaleDay 白天风力
      * @property textNight 夜间天气状况
-     * @property windDirNight 夜间风向
-     * @property windScaleNight 夜间风力
      * @property humidity 相对湿度
      */
     data class Daily(
+        val fxDate: String,
         val tempMax: String,
         val tempMin: String,
         val textDay: String,
-        val windDirDay: String,
-        val windScaleDay: String,
         val textNight: String,
-        val windDirNight: String,
-        val windScaleNight: String,
         val humidity: String
     )
 }
