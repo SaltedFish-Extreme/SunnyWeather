@@ -45,7 +45,7 @@ class LocationFragment : Fragment() {
 
     //绑定布局资源
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        mRootView = inflater.inflate(R.layout.fragment_location, container)
+        mRootView = inflater.inflate(R.layout.fragment_location, container, false)
         initViews(mRootView)
         return mRootView
     }
