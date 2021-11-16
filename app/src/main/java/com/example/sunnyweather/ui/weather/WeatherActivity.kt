@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.sunnyweather.R
 import com.example.sunnyweather.logic.model.Weather
@@ -34,6 +35,8 @@ class WeatherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
+        //设置状态栏沉浸
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         //设置标题太长触发走马灯效果
         locationName.ellipsize = TextUtils.TruncateAt.MARQUEE
         locationName.isSelected = true

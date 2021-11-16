@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/windowBackground">
+    android:background="@drawable/bg_weather"
+    android:fitsSystemWindows="true">
 
     <ImageView
         android:id="@+id/bgImageView"
@@ -16,8 +17,7 @@
     <FrameLayout
         android:id="@+id/actionBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#eeeeee">
+        android:layout_height="60dp">
 
         <EditText
             android:id="@+id/searchLocationEdit"
@@ -31,7 +31,6 @@
             android:importantForAutofill="no"
             android:inputType="text"
             android:paddingHorizontal="10dp"
-            android:paddingTop="5dp"
             android:textSize="25sp" />
     </FrameLayout>
 

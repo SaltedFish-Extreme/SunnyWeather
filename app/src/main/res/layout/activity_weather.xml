@@ -12,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
         <!--引入实时天气布局-->
         <include layout="@layout/now" />
