@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunnyweather.R
-import com.example.sunnyweather.logic.model.Location
+import com.example.sunnyweather.logic.model.LocationResponse.Location
 import com.example.sunnyweather.ui.weather.WeatherActivity
 
 /**
