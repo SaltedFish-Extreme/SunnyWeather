@@ -1,6 +1,7 @@
 package com.example.sunnyweather.ui.weather
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -33,6 +34,12 @@ class WeatherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather)
+        //设置标题太长触发走马灯效果
+        locationName.ellipsize = TextUtils.TruncateAt.MARQUEE
+        locationName.isSelected = true
+        locationName.isFocusable = true
+        locationName.isSingleLine = true
+        locationName.isFocusableInTouchMode = true
         //从Intent中取出地区名称赋值到viewModel相应变量中
         viewModel.locationName = intent.getStringExtra("location_name") ?: ""
         //从Intent中取出地区ID初始化locationID

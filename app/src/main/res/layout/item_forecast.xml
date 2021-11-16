@@ -9,8 +9,7 @@
         android:id="@+id/dateInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:gravity="center" />
 
     <!--预报天气-->
@@ -18,17 +17,15 @@
         android:id="@+id/weatherInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="3"
-        android:gravity="end" />
+        android:layout_weight="4"
+        android:gravity="center" />
 
     <!--预报温度-->
     <TextView
         android:id="@+id/temperatureInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:gravity="center" />
 
     <!--预报湿度-->
@@ -36,7 +33,6 @@
         android:id="@+id/humidityInfo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="center" />
 
