@@ -16,7 +16,8 @@ class WeatherViewModel : ViewModel() {
     private val locationIDLiveData = MutableLiveData<String>()
 
     //对界面上相关数据进行缓存
-    var locationName = ""
+    lateinit var locationName: String
+    lateinit var locationID: String
 
     /**
      * 观察者

@@ -20,9 +20,6 @@ class WeatherActivity : AppCompatActivity() {
         ViewModelProvider.NewInstanceFactory()
     }
 
-    //懒加载要查询的地区ID
-    private lateinit var locationID: String
-
     private val forecastLayout: LinearLayout by lazy { findViewById(R.id.forecastLayout) }
     private val windScale: TextView by lazy { findViewById(R.id.windScale) }
     private val windDir: TextView by lazy { findViewById(R.id.windDir) }
@@ -46,10 +43,9 @@ class WeatherActivity : AppCompatActivity() {
         locationName.isFocusable = true
         locationName.isSingleLine = true
         locationName.isFocusableInTouchMode = true
-        //从Intent中取出地区名称赋值到viewModel相应变量中
+        //从Intent中取出地区名称和ID赋值到viewModel相应变量中
         viewModel.locationName = intent.getStringExtra("location_name") ?: ""
-        //从Intent中取出地区ID初始化locationID
-        locationID = intent.getStringExtra("location_id") ?: ""
+        viewModel.locationID = intent.getStringExtra("location_id") ?: ""
         //观察liveData数据发生改变，请求回调数据不为空则解析数据并展示
         viewModel.weatherLiveData.observe(this) {
             val weather = it.getOrNull()
@@ -61,7 +57,7 @@ class WeatherActivity : AppCompatActivity() {
             }
         }
         //执行刷新天气请求
-        viewModel.refreshWeather(locationID)
+        viewModel.refreshWeather(viewModel.locationID)
     }
 
     /**
@@ -103,8 +99,11 @@ class WeatherActivity : AppCompatActivity() {
         //填充当天空气生活指数数据
         for (indices in indicesList) {
             when (indices.type) {
+                //运动指数
                 "1" -> sportTv.text = indices.category
+                //洗车指数
                 "2" -> washTv.text = indices.category
+                //紫外线指数
                 "5" -> sunTv.text = indices.category
             }
         }
