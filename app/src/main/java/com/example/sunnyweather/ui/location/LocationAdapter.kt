@@ -23,9 +23,11 @@ class LocationAdapter(private val fragment: Fragment, private val locationList: 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_location, parent, false)
         ViewHolder(view).apply {
+            //itemView父布局添加点击事件，以跳转天气界面
             itemView.setOnClickListener {
                 val location = locationList[adapterPosition]
                 Intent(parent.context, WeatherActivity::class.java).apply {
+                    //传递地区名称以及地区id
                     putExtra("location_name", location.name)
                     putExtra("location_id", location.id)
                     fragment.startActivity(this)
@@ -37,6 +39,7 @@ class LocationAdapter(private val fragment: Fragment, private val locationList: 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val location = locationList[position]
+        //设置子项itemView的地区名和省市区
         holder.locationName.text = location.name
         holder.locationAddress.text = fragment.getString(R.string.location_address, location.country, location.adm1, location.adm2)
     }
