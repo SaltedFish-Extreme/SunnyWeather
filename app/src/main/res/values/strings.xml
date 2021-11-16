@@ -20,7 +20,7 @@
     <string name="temp">温度</string>
     <string name="real_time_temp">%s℃</string>
     <string name="real_time_feels_like">%s°</string>
-    <string name="real_time_humidity">%s\%</string>
+    <string name="real_time_humidity">%s%%</string>
     <string name="real_time_wind_scale">%s级</string>
     <string name="weather_info">白天%s&#160;夜间%s</string>
     <string name="temperature_info">%s/%s℃</string>
