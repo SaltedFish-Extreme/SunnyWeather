@@ -31,6 +31,9 @@ class WeatherActivity : AppCompatActivity() {
     private val currentWeather: TextView by lazy { findViewById(R.id.currentWeather) }
     private val currentTemp: TextView by lazy { findViewById(R.id.currentTemp) }
     private val locationName: TextView by lazy { findViewById(R.id.locationName) }
+    private val sunTv: TextView by lazy { findViewById(R.id.sunTv) }
+    private val washTv: TextView by lazy { findViewById(R.id.washTv) }
+    private val sportTv: TextView by lazy { findViewById(R.id.sportTv) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,9 +72,10 @@ class WeatherActivity : AppCompatActivity() {
     private fun showWeatherInfo(weather: Weather) {
         //设置标题城市名
         locationName.text = viewModel.locationName
-        //获取实时天气与未来天气数据集
+        //获取实时天气与未来天气和生活指数数据集
         val now = weather.now
         val dailyList = weather.daily
+        val indicesList = weather.indices
         //填充实时天气布局中数据
         currentTemp.text = getString(R.string.real_time_temp, now.temp)
         currentWeather.text = now.text
@@ -95,6 +99,14 @@ class WeatherActivity : AppCompatActivity() {
             humidityInfo.text = getString(R.string.real_time_humidity, daily.humidity)
             //添加自定义未来天气视图到父布局
             forecastLayout.addView(view)
+        }
+        //填充当天空气生活指数数据
+        for (indices in indicesList) {
+            when (indices.type) {
+                "1" -> sportTv.text = indices.category
+                "2" -> washTv.text = indices.category
+                "5" -> sunTv.text = indices.category
+            }
         }
     }
 }

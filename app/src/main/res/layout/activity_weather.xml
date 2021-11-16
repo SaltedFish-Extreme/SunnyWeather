@@ -18,6 +18,8 @@
         <include layout="@layout/now" />
         <!--引入天气预报布局-->
         <include layout="@layout/forecast" />
+        <!--引入生活指数布局-->
+        <include layout="@layout/indices" />
     </LinearLayout>
 
 </ScrollView>

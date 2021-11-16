@@ -14,4 +14,9 @@
     <string name="real_time_wind_scale">%s级</string>
     <string name="weather_info">白天%s&#160;夜间%s</string>
     <string name="temperature_info">%s/%s℃</string>
+    <string name="life_indices">生活指数</string>
+    <string name="sport_indices">运动指数</string>
+    <string name="wash_indices">洗车指数</string>
+    <string name="sun_indices">紫外线指数</string>
+    <string name="unknown">未知</string>
 </resources>

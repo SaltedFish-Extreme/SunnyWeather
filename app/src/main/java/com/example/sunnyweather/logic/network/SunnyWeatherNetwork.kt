@@ -45,6 +45,14 @@ object SunnyWeatherNetwork {
     suspend fun getDailyWeather(locationID: String) = weatherService.getDailyWeather(locationID).await()
 
     /**
+     * 发起当天空气生活指数查询请求
+     *
+     * @param locationID 要查询的城市ID
+     * @return 返回数据
+     */
+    suspend fun getIndicesWeather(locationID: String) = weatherService.getIndicesWeather(locationID).await()
+
+    /**
      * 简化Retrofit网络请求回调写法
      *
      * @param T 网络请求接口泛型

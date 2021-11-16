@@ -12,7 +12,7 @@ object ServiceCreator {
     //城市查询全局URL根路径
     private const val BASE_CITY_URL = "https://geoapi.qweather.com/"
 
-    //天气查询全局URL根路径
+    //天气全局URL根路径
     private const val BASE_WEATHER_URL = "https://devapi.qweather.com/"
 
     //创建城市Retrofit对象并指定请求根目录及转换器

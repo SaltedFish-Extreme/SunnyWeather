@@ -2,6 +2,7 @@ package com.example.sunnyweather.logic.network
 
 import com.example.sunnyweather.SunnyWeatherApplication
 import com.example.sunnyweather.logic.model.DailyResponse
+import com.example.sunnyweather.logic.model.IndicesResponse
 import com.example.sunnyweather.logic.model.NowResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -30,4 +31,13 @@ interface WeatherService {
      */
     @GET("v7/weather/7d?key=${SunnyWeatherApplication.TOKEN}")
     fun getDailyWeather(@Query("location") locationID: String): Call<DailyResponse>
+
+    /**
+     * 当天空气生活指数查询
+     *
+     * @param locationID 要查询的城市ID
+     * @return 当天空气生活指数信息请求回调
+     */
+    @GET("v7/indices/1d?type=${SunnyWeatherApplication.INDICES_TYPE}&key=${SunnyWeatherApplication.TOKEN}")
+    fun getIndicesWeather(@Query("location") locationID: String): Call<IndicesResponse>
 }

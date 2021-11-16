@@ -43,23 +43,31 @@ object Repository {
     fun refreshWeather(locationID: String) = fire {
         //创建协程作用域，以使用async函数
         coroutineScope {
-            //并发执行获取实时天气信息与未来天气信息请求，提升程序运行效率
+            //并发执行获取实时天气信息与未来天气信息和当天生活指数请求，提升程序运行效率
             val deferredNow = async {
                 SunnyWeatherNetwork.getNowWeather(locationID)
             }
             val deferredDaily = async {
                 SunnyWeatherNetwork.getDailyWeather(locationID)
             }
+            val deferredIndices = async {
+                SunnyWeatherNetwork.getIndicesWeather(locationID)
+            }
             //分别获取响应数据
             val nowResponse = deferredNow.await()
             val dailyResponse = deferredDaily.await()
-            //同时请求成功将两者天气信息封装返回
-            if (nowResponse.code == "200" && dailyResponse.code == "200") {
-                val weather = Weather(nowResponse.now, dailyResponse.daily)
+            val indicesResponse = deferredIndices.await()
+            if (nowResponse.code == "200" && dailyResponse.code == "200" && indicesResponse.code == "200") {
+                //如果全部请求成功则将三者信息封装返回
+                val weather = Weather(nowResponse.now, dailyResponse.daily, indicesResponse.daily)
+                Result.success(weather)
+            } else if (nowResponse.code == "200" && dailyResponse.code == "200") {
+                //如果实时及未来天气信息请求成功则将前两者信息封装返回 (对于没有生活指数的城市,返回代码204)
+                val weather = Weather(nowResponse.now, dailyResponse.daily, emptyList())
                 Result.success(weather)
             } else {
-                //有一个请求失败则封装两者返回码打印异常
-                Result.failure(RuntimeException("now response code is ${nowResponse.code}, daily response code is ${dailyResponse.code}"))
+                //请求失败则封装三者返回码打印异常
+                Result.failure(RuntimeException("now response code is ${nowResponse.code}, daily response code is ${dailyResponse.code}, indices response code is ${indicesResponse.code}"))
             }
         }
     }
