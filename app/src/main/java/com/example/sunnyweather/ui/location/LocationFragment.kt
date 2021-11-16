@@ -21,7 +21,7 @@ import com.example.sunnyweather.R
  */
 class LocationFragment : Fragment() {
 
-    //初始化viewModel对象
+    //延迟初始化viewModel对象
     private val viewModel = viewModels<LocationViewModel> {
         ViewModelProvider.NewInstanceFactory()
     }

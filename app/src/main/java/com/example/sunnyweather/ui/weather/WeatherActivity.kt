@@ -15,7 +15,7 @@ import com.example.sunnyweather.logic.model.Weather
 
 class WeatherActivity : AppCompatActivity() {
 
-    //初始化viewModel对象
+    //延迟初始化viewModel对象
     private val viewModel: WeatherViewModel by viewModels {
         ViewModelProvider.NewInstanceFactory()
     }
