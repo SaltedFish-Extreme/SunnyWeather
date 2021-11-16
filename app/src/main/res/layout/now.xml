@@ -15,9 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             android:layout_marginHorizontal="60dp"
             android:lines="1"
-            android:text="@string/location_name"
             android:textColor="@android:color/black"
             android:textSize="40sp" />
     </FrameLayout>
@@ -41,7 +41,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/current_temp"
                 android:textColor="@android:color/holo_orange_dark"
                 android:textSize="60sp" />
 
@@ -57,7 +56,6 @@
                 android:id="@+id/currentWeather"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/current_weather"
                 android:textColor="@android:color/holo_blue_bright"
                 android:textSize="55sp" />
         </LinearLayout>
@@ -74,7 +72,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/feels_like"
                 android:textColor="@android:color/holo_orange_light"
                 android:textSize="55sp" />
 
@@ -90,7 +87,6 @@
                 android:id="@+id/humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/humidity"
                 android:textColor="@android:color/holo_blue_light"
                 android:textSize="50sp" />
         </LinearLayout>
@@ -107,7 +103,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/wind_dir"
                 android:textColor="@android:color/holo_purple"
                 android:textSize="40sp" />
 
@@ -123,7 +118,6 @@
                 android:id="@+id/windScale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/wind_scale"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textSize="40sp" />
         </LinearLayout>

@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="3"
-        android:gravity="center"
-        android:text="@string/forecast_date" />
+        android:gravity="center" />
 
     <!--预报天气-->
     <TextView
@@ -21,8 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="3"
-        android:gravity="start"
-        android:text="@string/forecast_weather" />
+        android:gravity="end" />
 
     <!--预报温度-->
     <TextView
@@ -31,8 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="3"
-        android:gravity="center"
-        android:text="@string/forecast_temp" />
+        android:gravity="center" />
 
     <!--预报湿度-->
     <TextView
@@ -40,8 +37,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:text="@string/humidity" />
+        android:layout_weight="1"
+        android:gravity="center" />
 
 </LinearLayout>
