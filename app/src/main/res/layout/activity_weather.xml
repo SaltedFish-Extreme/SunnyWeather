@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/weatherLayout"
+    android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_weather"
-    android:overScrollMode="never"
-    android:scrollbars="none"
     tools:context=".ui.weather.WeatherActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical">
-        <!--引入实时天气布局-->
-        <include layout="@layout/now" />
-        <!--引入天气预报布局-->
-        <include layout="@layout/forecast" />
-        <!--引入生活指数布局-->
-        <include layout="@layout/indices" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-</ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+            <!--引入实时天气布局-->
+            <include layout="@layout/now" />
+            <!--引入天气预报布局-->
+            <include layout="@layout/forecast" />
+            <!--引入生活指数布局-->
+            <include layout="@layout/indices" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

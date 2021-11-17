@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.sunnyweather.R
 import com.example.sunnyweather.logic.model.Weather
 
@@ -31,6 +32,7 @@ class WeatherActivity : AppCompatActivity() {
     private val sunTv: TextView by lazy { findViewById(R.id.sunTv) }
     private val washTv: TextView by lazy { findViewById(R.id.washTv) }
     private val sportTv: TextView by lazy { findViewById(R.id.sportTv) }
+    private val swipeRefresh: SwipeRefreshLayout by lazy { findViewById(R.id.swipeRefresh) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,9 +57,22 @@ class WeatherActivity : AppCompatActivity() {
                 Toast.makeText(this, "无法成功获取天气信息", Toast.LENGTH_SHORT).show()
                 it.exceptionOrNull()?.printStackTrace()
             }
+            //网络请求完成取消刷新部件显示
+            swipeRefresh.isRefreshing = false
         }
-        //执行刷新天气请求
-        viewModel.refreshWeather(viewModel.locationID)
+        //设置刷新部件颜色
+        swipeRefresh.setColorSchemeResources(
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_blue_bright,
+            android.R.color.holo_green_light,
+            android.R.color.holo_purple
+        )
+        //初始化页面发起网络请求
+        refreshWeather()
+        swipeRefresh.setOnRefreshListener {
+            //当下拉刷新页面时发起网络请求刷新天气信息
+            refreshWeather()
+        }
     }
 
     /**
@@ -107,5 +122,15 @@ class WeatherActivity : AppCompatActivity() {
                 "5" -> sunTv.text = indices.category
             }
         }
+    }
+
+    /**
+     * 执行刷新天气请求
+     *
+     */
+    private fun refreshWeather() {
+        //刷新部件显示
+        swipeRefresh.isRefreshing = true
+        viewModel.refreshWeather(viewModel.locationID)
     }
 }
