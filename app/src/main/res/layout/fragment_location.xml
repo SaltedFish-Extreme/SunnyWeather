@@ -31,6 +31,8 @@
             android:importantForAutofill="no"
             android:inputType="text"
             android:paddingHorizontal="10dp"
+            android:textColor="?android:attr/textColorHighlight"
+            android:textColorHint="?android:attr/textColorHint"
             android:textSize="25sp" />
     </FrameLayout>
 

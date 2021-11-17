@@ -48,7 +48,7 @@
                     android:layout_above="@id/sportTv"
                     android:layout_toEndOf="@id/sportIv"
                     android:text="@string/sport_indices"
-                    android:textColor="@android:color/primary_text_light" />
+                    android:textColor="?android:attr/textColorPrimary" />
 
                 <TextView
                     android:id="@+id/sportTv"
@@ -79,7 +79,7 @@
                     android:layout_above="@id/washTv"
                     android:layout_toEndOf="@id/washIv"
                     android:text="@string/wash_indices"
-                    android:textColor="@android:color/primary_text_light" />
+                    android:textColor="?android:attr/textColorPrimary" />
 
                 <TextView
                     android:id="@+id/washTv"
@@ -110,7 +110,7 @@
                     android:layout_above="@id/sunTv"
                     android:layout_toEndOf="@id/sunIv"
                     android:text="@string/sun_indices"
-                    android:textColor="@android:color/primary_text_light" />
+                    android:textColor="?android:attr/textColorPrimary" />
 
                 <TextView
                     android:id="@+id/sunTv"

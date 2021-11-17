@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.SunnyWeather" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="android:textColorHint">?android:attr/textColorHintInverse</item>
+    </style>
+</resources>
