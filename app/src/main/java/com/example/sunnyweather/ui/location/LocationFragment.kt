@@ -1,5 +1,6 @@
 package com.example.sunnyweather.ui.location
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sunnyweather.R
+import com.example.sunnyweather.ui.weather.WeatherActivity
 
 /**
  * Created by 咸鱼至尊 on 2021/11/13
@@ -22,7 +24,7 @@ import com.example.sunnyweather.R
 class LocationFragment : Fragment() {
 
     //延迟初始化viewModel对象
-    private val viewModel = viewModels<LocationViewModel> {
+    internal val viewModel = viewModels<LocationViewModel> {
         ViewModelProvider.NewInstanceFactory()
     }
 
@@ -52,6 +54,18 @@ class LocationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (viewModel.value.isLocationSaved()) {
+            //如果当前已有存储的城市数据。则获取并解析成Location对象，设置参数并跳转天气界面
+            val location = viewModel.value.getSaveLocation()
+            Intent(context, WeatherActivity::class.java).apply {
+                putExtra("location_name", location.name)
+                putExtra("location_id", location.id)
+                startActivity(this)
+            }
+            //关闭当前页面并取消后面操作
+            activity?.finish()
+            return
+        }
         val layoutManager = LinearLayoutManager(activity)
         //设置recyclerView布局管理器
         recyclerView.layoutManager = layoutManager
@@ -80,7 +94,7 @@ class LocationFragment : Fragment() {
                 viewModel.value.locationList.addAll(locations)
                 adapter.notifyDataSetChanged()
             } else {
-                Toast.makeText(activity, "未能查询到任何城市", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "未能查询到任何城市", Toast.LENGTH_SHORT).show()
                 it.exceptionOrNull()?.printStackTrace()
             }
         }

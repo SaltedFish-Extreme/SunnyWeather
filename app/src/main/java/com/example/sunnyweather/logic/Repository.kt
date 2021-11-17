@@ -1,6 +1,8 @@
 package com.example.sunnyweather.logic
 
 import androidx.lifecycle.liveData
+import com.example.sunnyweather.logic.dao.LocationDao
+import com.example.sunnyweather.logic.model.LocationResponse
 import com.example.sunnyweather.logic.model.Weather
 import com.example.sunnyweather.logic.network.SunnyWeatherNetwork
 import kotlinx.coroutines.Dispatchers
@@ -92,4 +94,25 @@ object Repository {
         //返回包装结果
         emit(result)
     }
+
+    /**
+     * 存储城市对象到sp缓存
+     *
+     * @param location 城市对象
+     */
+    fun saveLocation(location: LocationResponse.Location) = LocationDao.saveLocation(location)
+
+    /**
+     * 从sp缓存获取城市对象
+     *
+     * @return 城市对象
+     */
+    fun getSavedLocation() = LocationDao.getSavedLocation()
+
+    /**
+     * 判断城市对象是否已被缓存
+     *
+     * @return 是否
+     */
+    fun isLocationSaved() = LocationDao.isLocationSaved()
 }

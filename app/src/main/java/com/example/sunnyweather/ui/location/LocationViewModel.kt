@@ -38,4 +38,25 @@ class LocationViewModel : ViewModel() {
     fun searchLocation(location: String) {
         searchLiveData.value = location
     }
+
+    /**
+     * 存储城市对象到sp缓存
+     *
+     * @param location 城市对象
+     */
+    fun saveLocation(location: Location) = Repository.saveLocation(location)
+
+    /**
+     * 从sp缓存获取城市对象
+     *
+     * @return 城市对象
+     */
+    fun getSaveLocation() = Repository.getSavedLocation()
+
+    /**
+     * 判断城市对象是否已被缓存
+     *
+     * @return 是否
+     */
+    fun isLocationSaved() = Repository.isLocationSaved()
 }
