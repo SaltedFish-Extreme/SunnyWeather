@@ -15,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sunnyweather.MainActivity
 import com.example.sunnyweather.R
 import com.example.sunnyweather.ui.weather.WeatherActivity
 
@@ -54,8 +55,8 @@ class LocationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (viewModel.value.isLocationSaved()) {
-            //如果当前已有存储的城市数据。则获取并解析成Location对象，设置参数并跳转天气界面
+        //如果当前Fragment属于MainActivity并且已有存储的城市数据,则获取并解析成Location对象，设置参数并跳转天气界面(防止被天气界面嵌入导致无限循环跳转页面)
+        if (activity is MainActivity && viewModel.value.isLocationSaved()) {
             val location = viewModel.value.getSaveLocation()
             Intent(context, WeatherActivity::class.java).apply {
                 putExtra("location_name", location.name)

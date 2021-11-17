@@ -26,14 +26,28 @@ class LocationAdapter(private val fragment: LocationFragment, private val locati
             //itemView父布局添加点击事件，以跳转天气界面
             itemView.setOnClickListener {
                 val location = locationList[adapterPosition]
-                Intent(parent.context, WeatherActivity::class.java).apply {
-                    //传递地区名称以及地区id
-                    putExtra("location_name", location.name)
-                    putExtra("location_id", location.id)
-                    //跳转前将城市信息存到sp缓存中
-                    fragment.viewModel.value.saveLocation(location)
-                    fragment.startActivity(this)
+                val activity = fragment.activity
+                //判断当前适配器所属fragment是否属于WeatherActivity
+                if (activity is WeatherActivity) {
+                    //关闭侧滑栏
+                    activity.drawerLayout.closeDrawers()
+                    //给WeatherActivity的viewModel对象设置属性
+                    activity.viewModel.locationID = location.id
+                    activity.viewModel.locationName = location.name
+                    //刷新天气信息
+                    activity.refreshWeather()
+                } else {
+                    Intent(parent.context, WeatherActivity::class.java).apply {
+                        //传递地区名称以及地区id启动天气页面
+                        putExtra("location_name", location.name)
+                        putExtra("location_id", location.id)
+                        fragment.startActivity(this)
+                    }
+                    //关闭所属页面(主页)
+                    activity?.finish()
                 }
+                //最后都将城市信息存到sp缓存中
+                fragment.viewModel.value.saveLocation(location)
             }
             return this
         }

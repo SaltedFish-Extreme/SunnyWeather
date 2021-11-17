@@ -1,14 +1,20 @@
 package com.example.sunnyweather.ui.weather
 
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.WindowCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.sunnyweather.R
@@ -17,7 +23,7 @@ import com.example.sunnyweather.logic.model.Weather
 class WeatherActivity : AppCompatActivity() {
 
     //延迟初始化viewModel对象
-    private val viewModel: WeatherViewModel by viewModels {
+    internal val viewModel: WeatherViewModel by viewModels {
         ViewModelProvider.NewInstanceFactory()
     }
 
@@ -33,6 +39,8 @@ class WeatherActivity : AppCompatActivity() {
     private val washTv: TextView by lazy { findViewById(R.id.washTv) }
     private val sportTv: TextView by lazy { findViewById(R.id.sportTv) }
     private val swipeRefresh: SwipeRefreshLayout by lazy { findViewById(R.id.swipeRefresh) }
+    private val navBtn: Button by lazy { findViewById(R.id.navBtn) }
+    val drawerLayout: DrawerLayout by lazy { findViewById(R.id.drawerLayout) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +81,28 @@ class WeatherActivity : AppCompatActivity() {
             //当下拉刷新页面时发起网络请求刷新天气信息
             refreshWeather()
         }
+        navBtn.setOnClickListener {
+            //点击标题左边按钮以打开侧滑栏界面
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+        //监听侧滑栏状态以在关闭时隐藏输入法
+        drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
+
+            override fun onDrawerClosed(drawerView: View) {
+                //当侧滑栏关闭时隐藏用户输入键盘
+                val manager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                manager.hideSoftInputFromWindow(drawerView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+            }
+
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+            }
+
+            override fun onDrawerOpened(drawerView: View) {
+            }
+
+            override fun onDrawerStateChanged(newState: Int) {
+            }
+        })
     }
 
     /**
@@ -112,15 +142,21 @@ class WeatherActivity : AppCompatActivity() {
             forecastLayout.addView(view)
         }
         //填充当天空气生活指数数据
-        for (indices in indicesList) {
-            when (indices.type) {
-                //运动指数
-                "1" -> sportTv.text = indices.category
-                //洗车指数
-                "2" -> washTv.text = indices.category
-                //紫外线指数
-                "5" -> sunTv.text = indices.category
+        if (indicesList.isNotEmpty()) {
+            for (indices in indicesList) {
+                when (indices.type) {
+                    //运动指数
+                    "1" -> sportTv.text = indices.category
+                    //洗车指数
+                    "2" -> washTv.text = indices.category
+                    //紫外线指数
+                    "5" -> sunTv.text = indices.category
+                }
             }
+        } else {
+            sportTv.text = getString(R.string.unknown)
+            washTv.text = getString(R.string.unknown)
+            sunTv.text = getString(R.string.unknown)
         }
     }
 
@@ -128,7 +164,7 @@ class WeatherActivity : AppCompatActivity() {
      * 执行刷新天气请求
      *
      */
-    private fun refreshWeather() {
+    internal fun refreshWeather() {
         //刷新部件显示
         swipeRefresh.isRefreshing = true
         viewModel.refreshWeather(viewModel.locationID)
