@@ -2,6 +2,4 @@
 <resources>
     <color name="violet">#ee82ee</color><!--紫罗兰色 -->
     <color name="superblue">#38ACFF</color><!--超级蓝色 -->
-    <color name="fuchsia">#ff00ff</color><!--紫红色 -->
-    <color name="white_translucent">#80FFFFFF</color><!--白色半透明-->
 </resources>
